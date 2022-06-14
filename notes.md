@@ -76,7 +76,7 @@ genfstab -U / >> /etc/fstab
 ```
  > at this point, the system should boot
 
-## Conifguration
+## Configuration
 Timezone
 ```
 ln -sf /usr/share/zoneinfo/Region/City /etc/localtime
