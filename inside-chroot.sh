@@ -27,5 +27,5 @@ echo "Generated locale"
 echo "LANG=en_US.UTF-8" >> /etc/locale.conf
 
 # Set hostname in /etc/hostname
-echo "arch" >> /etc/hostname > /dev/null
+echo "arch" >> /etc/hostname
 echo "Set Hostname"

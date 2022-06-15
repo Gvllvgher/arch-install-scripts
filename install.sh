@@ -31,11 +31,11 @@ pacstrap /mnt base linux linux-firmware dhcpcd git wget curl vim nano grub efibo
 echo "Installed essential packages"
 
 # Set a root password
-echo "root:arch" | arch-chroot /mnt chpasswd /dev/null
+echo "rootshutdown :arch" | arch-chroot /mnt chpasswd /dev/null
 echo "Set root password"
 
 # Generate fstab with current mount points
-genfstab -U /mnt >> /mnt/etc/fstab > /dev/null
+genfstab -U /mnt >> /mnt/etc/fstab
 echo "Generated fstab"
 
 # Copy inside-chroot.sh to /mnt
