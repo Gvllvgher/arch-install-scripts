@@ -18,7 +18,7 @@ fdisk -l
 ```
 To edit the disk to install to
 ```
-fdisk /dev/[disk]
+cfdisk /dev/[disk]
 ```
 Partitions to create
 1. EFI System (boot) - All space
@@ -58,7 +58,7 @@ Install essentials
 ```
 pacstrap /mnt base linux linux-firmware git wget curl vim nano grub efibootmgr net-tools wpa_supplicant
 ```
-Export mounts to `fstab` - just in case something happens. *system will still not boot at this point*
+genfstab to write mounts
 ```
 genfstab -U /mnt >> /mnt/etc/fstab
 ```
@@ -68,12 +68,9 @@ arch-chroot /mnt
 ```
 Install grub to boot
 ```
-grub-install --target=x86_64-efi --efi-directory=[Efi system partition mount point] --bootloader-id=grub
+grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=grub
 ```
-genfstab again
-```
-genfstab -U / >> /etc/fstab
-```
+
  > at this point, the system should boot
 
 ## Configuration
