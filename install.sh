@@ -38,14 +38,22 @@ echo "Set root password"
 genfstab -U /mnt >> /mnt/etc/fstab
 echo "Generated fstab"
 
+# Make temp dir for this stuff
+mkdir /mnt/temp > /dev/null
+
 # Copy inside-chroot.sh to /mnt
-cp inside-chroot.sh /mnt/ > /dev/null
-chmod +X /mnt/inside-chroot.sh > /dev/null
-chmod +777 /mnt/inside-chroot.sh > /dev/null
+cp inside-chroot.sh /mnt/temp/ > /dev/null
 echo "Copied inside-chroot.sh to /mnt"
 
+# Clone arch-customization-scripts to /temp
+git clone https://github.com/Gvllvgher/arch-customization-scripts /mnt/temp > /dev/null
+
+# Change all .sh file permissoins
+chmod +x /mnt/temp/**/*.sh > /dev/null
+chmod +777 /mnt/temp/**/*.sh > /dev/null
+
 # Execute inside-chroot.sh
-arch-chroot /mnt /inside-chroot.sh
+arch-chroot /mnt /temp/inside-chroot.sh
 echo "Finished inside-chroot.sh execution"
 
 # This is a test for now

@@ -36,3 +36,6 @@ echo "%wheel ALL=(ALL:ALL) ALL" >> /etc/sudoers
 # Setup the `justin` user
 useradd -m justin > /dev/null
 usermod -aG wheel justin > /dev/null
+
+# Customization
+runuser -l justin -c '/temp/arch-customization-scripts/install-yay.sh'
