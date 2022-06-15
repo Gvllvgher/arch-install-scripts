@@ -50,4 +50,3 @@ echo "%wheel ALL=(ALL) NOPASSWD: /usr/bin/yay" >> /etc/sudoers
 # Remove nopasswd allow
 head -n -2 /etc/sudoers > /etc/sudoers.bak
 mv /etc/sudoers.bak /etc/sudoers
-rm /etc/sudoers.bak
