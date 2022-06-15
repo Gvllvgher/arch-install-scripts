@@ -46,7 +46,7 @@ cp inside-chroot.sh /mnt/temp/ > /dev/null
 echo "Copied inside-chroot.sh to /mnt"
 
 # Clone arch-customization-scripts to /temp
-git clone https://github.com/Gvllvgher/arch-customization-scripts /mnt/temp/ > /dev/null
+git -C /mnt/temp clone https://github.com/Gvllvgher/arch-customization-scripts > /dev/null
 
 # Change all .sh file permissoins
 chmod +x /mnt/temp/**/*.sh > /dev/null
