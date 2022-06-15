@@ -24,6 +24,9 @@ swapon /dev/sda2
 # Install essential packages
 pacstrap /mnt base linux linux-firmware git wget curl vim nano grub efibootmgr net-tools wpa_supplicant
 
+# Set a root password
+echo "root:arch" | arch-chroot /mnt chpasswd
+
 # Generate fstab with current mount points
 genfstab -U /mnt >> /mnt/etc/fstab
 

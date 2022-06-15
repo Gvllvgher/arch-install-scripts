@@ -11,6 +11,7 @@ ln -sf /usr/share/zoneinfo/America/New_York /etc/localtime
 hwclock --systohc
 
 # Generate Locale
+echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen
 locale-gen
 
 # Set locale in /etc/locale.conf
