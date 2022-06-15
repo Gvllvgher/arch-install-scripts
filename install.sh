@@ -31,7 +31,7 @@ pacstrap /mnt base linux linux-firmware dhcpcd git wget curl vim nano grub efibo
 echo "Installed essential packages"
 
 # Set a root password
-echo "rootshutdown :arch" | arch-chroot /mnt chpasswd /dev/null
+echo "root:arch" | arch-chroot /mnt chpasswd > /dev/null
 echo "Set root password"
 
 # Generate fstab with current mount points
