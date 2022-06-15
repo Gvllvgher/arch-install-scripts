@@ -14,6 +14,10 @@ echo "Set Timezone to America/New_York"
 hwclock --systohc > /dev/null
 echo "System clock sync"
 
+# Enable DHCP sevrice
+systemctl enable dhcpcd > /dev/null
+echo "Enabled the DHCP service"
+
 # Generate Locale
 echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen > /dev/null
 locale-gen > /dev/null
