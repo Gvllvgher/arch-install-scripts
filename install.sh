@@ -59,8 +59,8 @@ arch-chroot /mnt /temp/inside-chroot.sh
 echo "Finished inside-chroot.sh execution"
 
 # This is a test for now
-rm /mnt/inside-chroot.sh > /dev/null
-echo "Removed inside-chroot.sh from /mnt"
+rm -rf /mnt/temp > /dev/null
+echo "Removed /mnt/temp"
 
 # Set `justin` user password to `arch`
 echo "justin:arch" | arch-chroot /mnt chpasswd > /dev/null
