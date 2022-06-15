@@ -44,6 +44,9 @@ echo "%wheel ALL=(ALL) NOPASSWD: /usr/bin/yay" >> /etc/sudoers
 # Execute install-yay.sh
 /temp/arch-customization-scripts/install-yay.sh
 
+# Execute install-awesome.sh as justin
+runuser -l justin /temp/arch-customization-scripts/install-awesome.sh
+
 # Remove nopasswd allow
 head -n -2 /etc/sudoers > /etc/sudoers.bak
 mv /etc/sudoers.bak /etc/sudoers
