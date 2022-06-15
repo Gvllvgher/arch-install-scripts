@@ -39,15 +39,15 @@ genfstab -U /mnt >> /mnt/etc/fstab > /dev/null
 echo "Generated fstab"
 
 # Copy inside-chroot.sh to /mnt
-cp minimal-inside-chroot.sh /mnt/ > /dev/null
-chmod +X /mnt/minimal-inside-chroot.sh > /dev/null
-chmod +777 /mnt/minimal-inside-chroot.sh > /dev/null
+cp inside-chroot.sh /mnt/ > /dev/null
+chmod +X /mnt/inside-chroot.sh > /dev/null
+chmod +777 /mnt/inside-chroot.sh > /dev/null
 echo "Copied inside-chroot.sh to /mnt"
 
 # Execute inside-chroot.sh
-arch-chroot /mnt /minimal-inside-chroot.sh
+arch-chroot /mnt /inside-chroot.sh
 echo "Finished inside-chroot.sh execution"
 
 # This is a test for now
-rm /mnt/minimal-inside-chroot.sh > /dev/null
+rm /mnt/inside-chroot.sh > /dev/null
 echo "Removed inside-chroot.sh from /mnt"
