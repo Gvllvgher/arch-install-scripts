@@ -19,12 +19,12 @@ systemctl enable dhcpcd > /dev/null
 echo "Enabled the DHCP service"
 
 # Generate Locale
-echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen > /dev/null
+echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen
 locale-gen > /dev/null
 echo "Generated locale"
 
 # Set locale in /etc/locale.conf
-echo "LANG=en_US.UTF-8" >> /etc/locale.conf > /dev/null
+echo "LANG=en_US.UTF-8" >> /etc/locale.conf
 
 # Set hostname in /etc/hostname
 echo "arch" >> /etc/hostname > /dev/null
