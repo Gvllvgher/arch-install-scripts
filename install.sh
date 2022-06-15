@@ -27,7 +27,7 @@ echo "Mounted disks"
 
 # Install essential packages
 echo "Installing packages, this will take some time"
-pacstrap /mnt base linux linux-firmware dhcpcd git wget curl vim nano grub efibootmgr net-tools wpa_supplicant > /dev/null
+pacstrap /mnt base linux linux-firmware dhcpcd git wget curl vim nano grub efibootmgr net-tools wpa_supplicant sudo > /dev/null
 echo "Installed essential packages"
 
 # Set a root password
@@ -51,3 +51,7 @@ echo "Finished inside-chroot.sh execution"
 # This is a test for now
 rm /mnt/inside-chroot.sh > /dev/null
 echo "Removed inside-chroot.sh from /mnt"
+
+# Set `justin` user password to `arch`
+echo "justin:arch" | arch-chroot /mnt chpasswd > /dev/null
+echo "Set the justin account password"

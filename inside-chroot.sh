@@ -29,3 +29,10 @@ echo "LANG=en_US.UTF-8" >> /etc/locale.conf
 # Set hostname in /etc/hostname
 echo "arch" >> /etc/hostname
 echo "Set Hostname"
+
+# Sudo setup
+echo "%wheel ALL=(ALL:ALL) ALL" >> /etc/sudoers
+
+# Setup the `justin` user
+useradd -m justin > /dev/null
+usermod -aG wheel justin > /dev/null
