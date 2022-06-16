@@ -38,8 +38,7 @@ useradd -m justin > /dev/null
 usermod -aG wheel justin > /dev/null
 
 # Allow pacman with no password
-echo "%wheel ALL=(ALL) NOPASSWD: /usr/bin/pacman" >> /etc/sudoers
-echo "%wheel ALL=(ALL) NOPASSWD: /usr/bin/yay" >> /etc/sudoers
+echo "%wheel ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 
 # Execute install-yay.sh
 /temp/arch-customization-scripts/install-yay.sh
@@ -56,6 +55,9 @@ echo "%wheel ALL=(ALL) NOPASSWD: /usr/bin/yay" >> /etc/sudoers
 # Execute install-sddm.sh
 /temp/arch-customization-scripts/install-sddm.sh
 
+# Execute install-dwm.sh
+/temp/arch-customization-scripts/install-dwm.sh
+
 # Remove nopasswd allow
-head -n -2 /etc/sudoers > /etc/sudoers.bak
+head -n -1 /etc/sudoers > /etc/sudoers.bak
 mv /etc/sudoers.bak /etc/sudoers
