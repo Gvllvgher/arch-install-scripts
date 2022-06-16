@@ -50,6 +50,9 @@ echo "%wheel ALL=(ALL) NOPASSWD: /usr/bin/yay" >> /etc/sudoers
 # Execute install-zsh.sh
 /temp/arch-customization-scripts/install-zsh.sh
 
+# Execute install-omz.sh
+/temp/arch-customization-scripts/install-omz.sh
+
 # Remove nopasswd allow
 head -n -2 /etc/sudoers > /etc/sudoers.bak
 mv /etc/sudoers.bak /etc/sudoers
