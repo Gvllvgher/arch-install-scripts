@@ -45,7 +45,7 @@ echo "%wheel ALL=(ALL) NOPASSWD: /usr/bin/yay" >> /etc/sudoers
 /temp/arch-customization-scripts/install-yay.sh
 
 # Execute install-awesome.sh
-/temp/arch-customization-scripts/install-awesome.sh
+#/temp/arch-customization-scripts/install-awesome.sh
 
 # Execute install-zsh.sh
 /temp/arch-customization-scripts/install-zsh.sh
