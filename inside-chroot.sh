@@ -53,14 +53,14 @@ echo "%wheel ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 /temp/arch-customization-scripts/install-omz.sh
 
 # Execute install-sddm.sh
-/temp/arch-customization-scripts/install-sddm.sh
+#/temp/arch-customization-scripts/install-sddm.sh
 
 # Execute install-dwm.sh
 #/temp/arch-customization-scripts/install-dwm.sh
 
 # Excute install-chadwm.sh
-/temp/arch-customization-scripts/install-chadwm.sh
-/temp/arch-customization-scripts/install-st.sh
+#/temp/arch-customization-scripts/install-chadwm.sh
+#/temp/arch-customization-scripts/install-st.sh
 
 # Remove nopasswd allow
 head -n -1 /etc/sudoers > /etc/sudoers.bak
