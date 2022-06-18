@@ -1,30 +1,51 @@
 #! /bin/bash
 
-DISK=/dev/sda
+while getopts ':d:' opt; do
+    case $opt in
+        d)
+            INSTALL_DISK=${OPTARG}
+            echo "Install disk is set to: ${OPTARG}"
+            ;;
+        \?)
+            echo "Invalid option: -$OPTARG"
+            exit 1
+            ;;
+        :)
+            echo "Option -$OPTARG requires an argument."
+            exit 1
+            ;;
+    esac
+done
+
+if [ -z "$INSTALL_DISK" ]
+then
+    echo "Use parameter -d to define an install disk."
+    exit
+fi
 
 # Setup hardware clock
 timedatectl set-ntp true > /dev/null
 echo "Enabled NTP"
 
 # Disk Partitioning
-sgdisk -Z $DISK > /dev/null
-sgdisk -n 0:0:+500M -t 0:ef00 -c 0:"efi" $DISK > /dev/null
-sgdisk -n 0:0:+3G -t 0:8200 -c 0:"swap" $DISK > /dev/null
-sgdisk -n 0:0:0 -t 0:8300 -c 0:"linux" $DISK > /dev/null
-sgdisk -p $DISK > /dev/null
-partprobe $DISK > /dev/null
+sgdisk -Z $INSTALL_DISK > /dev/null
+sgdisk -n 0:0:+500M -t 0:ef00 -c 0:"efi" $INSTALL_DISK > /dev/null
+sgdisk -n 0:0:+3G -t 0:8200 -c 0:"swap" $INSTALL_DISK > /dev/null
+sgdisk -n 0:0:0 -t 0:8300 -c 0:"linux" $INSTALL_DISK > /dev/null
+sgdisk -p $INSTALL_DISK > /dev/null
+partprobe $INSTALL_DISK > /dev/null
 echo "Partitioned disks"
 
 # Disk Formatting
-mkfs.ext4 ${DISK}3 > /dev/null
-mkswap ${DISK}2 > /dev/null
-mkfs.fat -F 32 ${DISK}1 > /dev/null
+mkfs.ext4 ${INSTALL_DISK}3 > /dev/null
+mkswap ${INSTALL_DISK}2 > /dev/null
+mkfs.fat -F 32 ${INSTALL_DISK}1 > /dev/null
 echo "Formatted disks"
 
 # Mount the disks
-mount ${DISK}3 /mnt > /dev/null
-mount --mkdir ${DISK}1 /mnt/boot > /dev/null
-swapon ${DISK}2 > /dev/null
+mount ${INSTALL_DISK}3 /mnt > /dev/null
+mount --mkdir ${INSTALL_DISK}1 /mnt/boot > /dev/null
+swapon ${INSTALL_DISK}2 > /dev/null
 echo "Mounted disks"
 
 # Install essential packages
