@@ -1,28 +1,30 @@
-#! /bin/bash
+#! /bin/bash``
+
+DISK=/dev/sda
 
 # Setup hardware clock
 timedatectl set-ntp true > /dev/null
 echo "Enabled NTP"
 
 # Disk Partitioning
-sgdisk -Z /dev/sda > /dev/null
-sgdisk -n 0:0:+500M -t 0:ef00 -c 0:"efi" /dev/sda > /dev/null
-sgdisk -n 0:0:+3G -t 0:8200 -c 0:"swap" /dev/sda > /dev/null
-sgdisk -n 0:0:0 -t 0:8300 -c 0:"linux" /dev/sda > /dev/null
-sgdisk -p /dev/sda > /dev/null
-partprobe /dev/sda > /dev/null
+sgdisk -Z $DISK > /dev/null
+sgdisk -n 0:0:+500M -t 0:ef00 -c 0:"efi" $DISK > /dev/null
+sgdisk -n 0:0:+3G -t 0:8200 -c 0:"swap" $DISK > /dev/null
+sgdisk -n 0:0:0 -t 0:8300 -c 0:"linux" $DISK > /dev/null
+sgdisk -p $DISK > /dev/null
+partprobe $DISK > /dev/null
 echo "Partitioned disks"
 
 # Disk Formatting
-mkfs.ext4 /dev/sda3 > /dev/null
-mkswap /dev/sda2 > /dev/null
-mkfs.fat -F 32 /dev/sda1 > /dev/null
+mkfs.ext4 ${DISK}3 > /dev/null
+mkswap ${DISK}2 > /dev/null
+mkfs.fat -F 32 ${DISK}1 > /dev/null
 echo "Formatted disks"
 
 # Mount the disks
-mount /dev/sda3 /mnt > /dev/null
-mount --mkdir /dev/sda1 /mnt/boot > /dev/null
-swapon /dev/sda2 > /dev/null
+mount ${DISK}3 /mnt > /dev/null
+mount --mkdir ${DISK}1 /mnt/boot > /dev/null
+swapon ${DISK}2 > /dev/null
 echo "Mounted disks"
 
 # Install essential packages
