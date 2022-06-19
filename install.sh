@@ -17,10 +17,19 @@ while getopts ':d:' opt; do
     esac
 done
 
-if [ -z "$INSTALL_DISK" ]
-then
+if [[ -z "$INSTALL_DISK" ]]; then
     echo "Use parameter -d to define an install disk."
     exit
+fi
+
+if [[ "$INSTALL_DISK" == *"nvme"* ]]; then
+    INSTALL_DISK_PART1="${INSTALL_DISK}p1"
+    INSTALL_DISK_PART2="${INSTALL_DISK}p2"
+    INSTALL_DISK_PART3="${INSTALL_DISK}p3"
+else
+    INSTALL_DISK_PART1="${INSTALL_DISK}1"
+    INSTALL_DISK_PART2="${INSTALL_DISK}2"
+    INSTALL_DISK_PART3="${INSTALL_DISK}3"
 fi
 
 # Setup hardware clock
@@ -37,15 +46,15 @@ partprobe $INSTALL_DISK > /dev/null
 echo "Partitioned disks"
 
 # Disk Formatting
-mkfs.ext4 ${INSTALL_DISK}3 > /dev/null
-mkswap ${INSTALL_DISK}2 > /dev/null
-mkfs.fat -F 32 ${INSTALL_DISK}1 > /dev/null
+mkfs.ext4 $INSTALL_DISK_PART3 > /dev/null
+mkswap $INSTALL_DISK_PART2 > /dev/null
+mkfs.fat -F 32 $INSTALL_DISK_PART1 > /dev/null
 echo "Formatted disks"
 
 # Mount the disks
-mount ${INSTALL_DISK}3 /mnt > /dev/null
-mount --mkdir ${INSTALL_DISK}1 /mnt/boot > /dev/null
-swapon ${INSTALL_DISK}2 > /dev/null
+mount $INSTALL_DISK_PART3 /mnt > /dev/null
+mount --mkdir $INSTALL_DISK_PART1 /mnt/boot > /dev/null
+swapon $INSTALL_DISK_PART2 > /dev/null
 echo "Mounted disks"
 
 # Install essential packages
