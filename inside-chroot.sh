@@ -64,16 +64,16 @@ usermod -aG wheel $LOCAL_USER > /dev/null
 echo "%wheel ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 
 # Execute install-yay.sh
-/temp/arch-customization-scripts/install-yay.sh
+/temp/arch-customization-scripts/install-yay.sh -u $LOCAL_USER
 
 # Execute install-awesome.sh
 #/temp/arch-customization-scripts/install-awesome.sh
 
 # Execute install-zsh.sh
-/temp/arch-customization-scripts/install-zsh.sh
+/temp/arch-customization-scripts/install-zsh.sh -u $LOCAL_USER
 
 # Execute install-omz.sh
-/temp/arch-customization-scripts/install-omz.sh
+/temp/arch-customization-scripts/install-omz.sh -u $LOCAL_USER
 
 # Execute install-sddm.sh
 #/temp/arch-customization-scripts/install-sddm.sh
