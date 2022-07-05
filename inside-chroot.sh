@@ -63,6 +63,13 @@ usermod -aG wheel $LOCAL_USER > /dev/null
 # Allow pacman with no password
 echo "%wheel ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 
+# Check if running as virtual machine, if so, install vmware-tools
+dmidecode -s system-product-name | grep 'VMware' &> /dev/null
+if [[ $? == 0  ]]; then
+    echo "Detected as running as VMware VM, installing vmware-tools"
+    /temp/arch-customization-scripts/install-vmtools.sh
+fi
+
 # Execute install-yay.sh
 /temp/arch-customization-scripts/install-yay.sh -u $LOCAL_USER
 
