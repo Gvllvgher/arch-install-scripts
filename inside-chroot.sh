@@ -1,5 +1,28 @@
 #! /bin/bash
 
+# Parameters
+while getopts ':u:' opt; do
+    case $opt in
+        u)
+            LOCAL_USER=${OPTARG}
+            echo "LOCAL_USER set to: ${OPTARG}"
+            ;;
+        \?)
+            echo "Invalid option: -$OPTARG"
+            exit 1
+            ;;
+        :)
+            echo "Option -$OPTARG requires an argument."
+            exit 1
+            ;;
+    esac
+done
+
+if [[ -z "$LOCAL_USER" ]]; then
+    echo "Use parameter -u to specify the username."
+    exit 1
+fi
+
 # Install Grub
 grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=grub > /dev/null
 echo "Installed Grub"
@@ -33,9 +56,9 @@ echo "Set Hostname"
 # Sudo setup
 echo "%wheel ALL=(ALL:ALL) ALL" >> /etc/sudoers
 
-# Setup the `justin` user
-useradd -m justin > /dev/null
-usermod -aG wheel justin > /dev/null
+# Setup the user
+useradd -m $LOCAL_USER > /dev/null
+usermod -aG wheel $LOCAL_USER > /dev/null
 
 # Allow pacman with no password
 echo "%wheel ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers

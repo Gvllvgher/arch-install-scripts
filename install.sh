@@ -1,10 +1,14 @@
 #! /bin/bash
 
-while getopts ':d:' opt; do
+while getopts ':d:u:' opt; do
     case $opt in
         d)
             INSTALL_DISK=${OPTARG}
             echo "Install disk is set to: ${OPTARG}"
+            ;;
+        u)
+            LOCAL_USER=${OPTARG}
+            echo "Username is set to: ${OPTARG}"
             ;;
         \?)
             echo "Invalid option: -$OPTARG"
@@ -19,7 +23,12 @@ done
 
 if [[ -z "$INSTALL_DISK" ]]; then
     echo "Use parameter -d to define an install disk."
-    exit
+    exit 1
+fi
+
+if [[ -z "$LOCAL_USER" ]]; then
+    echo "Use parameter -u to specify the username."
+    exit 1
 fi
 
 if [[ "$INSTALL_DISK" == *"nvme"* ]]; then
@@ -30,6 +39,11 @@ else
     INSTALL_DISK_PART1="${INSTALL_DISK}1"
     INSTALL_DISK_PART2="${INSTALL_DISK}2"
     INSTALL_DISK_PART3="${INSTALL_DISK}3"
+fi
+
+if [[ "$LOCAL_USER" == *" "* ]]; then
+    echo "Username cannot contain spaces."
+    exit 1
 fi
 
 # Setup hardware clock
@@ -87,7 +101,7 @@ chmod +x /mnt/temp/**/*.sh > /dev/null
 chmod +777 /mnt/temp/**/*.sh > /dev/null
 
 # Execute inside-chroot.sh
-arch-chroot /mnt /temp/inside-chroot.sh
+arch-chroot /mnt /temp/inside-chroot.sh -u $LOCAL_USER
 echo "Finished inside-chroot.sh execution"
 
 # This is a test for now
