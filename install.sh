@@ -1,6 +1,6 @@
 #! /bin/bash
 
-while getopts ':d:u:' opt; do
+while getopts ':d:u:w:' opt; do
     case $opt in
         d)
             INSTALL_DISK=${OPTARG}
