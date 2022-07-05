@@ -10,6 +10,10 @@ while getopts ':d:u:' opt; do
             LOCAL_USER=${OPTARG}
             echo "Username is set to: ${OPTARG}"
             ;;
+        w)
+            WINDOW_MANAGER=${OPTARG}
+            echo "Window manager is set to: ${OPTARG}"
+            ;;
         \?)
             echo "Invalid option: -$OPTARG"
             exit 1
@@ -100,8 +104,13 @@ chmod +777 /mnt/temp/*.sh > /dev/null
 chmod +x /mnt/temp/**/*.sh > /dev/null
 chmod +777 /mnt/temp/**/*.sh > /dev/null
 
+
 # Execute inside-chroot.sh
-arch-chroot /mnt /temp/inside-chroot.sh -u $LOCAL_USER
+if [[ -z "$WINDOW_MANAGER" ]]; then
+    arch-chroot /mnt /temp/inside-chroot.sh -u $LOCAL_USER
+else 
+    arch-chroot /mnt /temp/inside-chroot.sh -u $LOCAL_USER -w $WINDOW_MANAGER
+fi
 echo "Finished inside-chroot.sh execution"
 
 # This is a test for now

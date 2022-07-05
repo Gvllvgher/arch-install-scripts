@@ -7,6 +7,10 @@ while getopts ':u:' opt; do
             LOCAL_USER=${OPTARG}
             echo "LOCAL_USER set to: ${OPTARG}"
             ;;
+        w)
+            WINDOW_MANAGER=${OPTARG}
+            echo "WINDOW_MANAGER set to: ${OPTARG}"
+            ;;
         \?)
             echo "Invalid option: -$OPTARG"
             exit 1
@@ -73,24 +77,13 @@ fi
 # Execute install-yay.sh
 /temp/arch-customization-scripts/install-yay.sh -u $LOCAL_USER
 
-# Execute install-awesome.sh
-#/temp/arch-customization-scripts/install-awesome.sh
-
 # Execute install-zsh.sh
 /temp/arch-customization-scripts/install-zsh.sh -u $LOCAL_USER
 
-# Execute install-omz.sh
-#/temp/arch-customization-scripts/install-omz.sh -u $LOCAL_USER
-
-# Execute install-sddm.sh
-#/temp/arch-customization-scripts/install-sddm.sh
-
-# Execute install-dwm.sh
-#/temp/arch-customization-scripts/install-dwm.sh
-
-# Excute install-chadwm.sh
-#/temp/arch-customization-scripts/install-chadwm.sh
-#/temp/arch-customization-scripts/install-st.sh
+# Check if -w was defined, install window manager
+if [[ "$WINDOW_MANAGER" == "qtile" ]]; then
+    /temp/arch-customization-scripts/install-qtile.sh
+fi
 
 # Remove nopasswd allow
 head -n -1 /etc/sudoers > /etc/sudoers.bak
