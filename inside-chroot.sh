@@ -73,7 +73,7 @@ echo "%wheel ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 /temp/arch-customization-scripts/install-zsh.sh -u $LOCAL_USER
 
 # Execute install-omz.sh
-/temp/arch-customization-scripts/install-omz.sh -u $LOCAL_USER
+#/temp/arch-customization-scripts/install-omz.sh -u $LOCAL_USER
 
 # Execute install-sddm.sh
 #/temp/arch-customization-scripts/install-sddm.sh
