@@ -108,6 +108,6 @@ echo "Finished inside-chroot.sh execution"
 rm -rf /mnt/temp > /dev/null
 echo "Removed /mnt/temp"
 
-# Set `justin` user password to `arch`
-echo "justin:arch" | arch-chroot /mnt chpasswd > /dev/null
-echo "Set the justin account password"
+# Set user password to `arch`
+echo "$LOCAL_USER:arch" | arch-chroot /mnt chpasswd > /dev/null
+echo "Set the $LOCAL_USER account password"
