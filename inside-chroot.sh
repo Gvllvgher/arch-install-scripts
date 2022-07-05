@@ -82,7 +82,7 @@ fi
 
 # Check if -w was defined, install window manager
 if [[ "$WINDOW_MANAGER" == "qtile" ]]; then
-    /temp/arch-customization-scripts/install-qtile.sh
+    /temp/arch-customization-scripts/install-qtile.sh -u $LOCAL_USER
 fi
 
 # Remove nopasswd allow
