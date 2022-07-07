@@ -42,8 +42,8 @@ hwclock --systohc > /dev/null
 echo "System clock sync"
 
 # Enable DHCP sevrice
-systemctl enable dhcpcd > /dev/null
-echo "Enabled the DHCP service"
+systemctl enable NetworkManager > /dev/null
+echo "Enabled the NetworkManager service"
 
 # Generate Locale
 echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen
