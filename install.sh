@@ -77,7 +77,7 @@ echo "Mounted disks"
 
 # Install essential packages
 echo "Installing packages, this will take some time"
-pacstrap /mnt base linux linux-firmware base-devel linux-headers networkmanager git wget curl vim grub efibootmgr net-tools sudo base-devel man dmidecode > /dev/null
+pacstrap /mnt base linux linux-firmware base-devel linux-headers networkmanager ufw git wget curl vim grub efibootmgr net-tools sudo base-devel man dmidecode > /dev/null
 echo "Installed essential packages"
 
 # Set a root password
