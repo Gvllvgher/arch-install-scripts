@@ -79,12 +79,6 @@ if [[ $? == 0  ]]; then
     /temp/arch-customization-scripts/install-vmtools.sh
 fi
 
-# Execute install-yay.sh
-/temp/arch-customization-scripts/install-yay.sh -u $LOCAL_USER
-
-# Execute install-zsh.sh
-/temp/arch-customization-scripts/install-zsh.sh -u $LOCAL_USER
-
 # Check if -w was defined, install window manager
 if [[ "$WINDOW_MANAGER" == "qtile" ]]; then
     /temp/arch-customization-scripts/install-qtile.sh -u $LOCAL_USER
