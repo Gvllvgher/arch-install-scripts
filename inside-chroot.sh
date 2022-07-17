@@ -45,11 +45,6 @@ echo "System clock sync"
 systemctl enable NetworkManager > /dev/null
 echo "Enabled the NetworkManager service"
 
-# Enable UFW
-systemctl enable ufw > /dev/null
-ufw enable > /dev/null
-echo "Enabled ufw"
-
 # Generate Locale
 echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen
 locale-gen > /dev/null
