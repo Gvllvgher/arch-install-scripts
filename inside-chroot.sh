@@ -1,7 +1,7 @@
 #! /bin/bash
 
 # Parameters
-while getopts ':u:w:' opt; do
+uhile getopts ':u:w:' opt; do
     case $opt in
         u)
             LOCAL_USER=${OPTARG}
@@ -29,6 +29,7 @@ fi
 
 # Install Grub
 grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=grub > /dev/null
+sed -i "s/GRUB_TIMEOUT=5/GRUB_TIMEOUT=2/g" /etc/default/grub
 echo "Installed Grub"
 grub-mkconfig -o /boot/grub/grub.cfg > /dev/null
 echo "Generated Grub configuration"
