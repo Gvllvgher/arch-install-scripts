@@ -25,6 +25,8 @@ while getopts ':d:u:w:' opt; do
     esac
 done
 
+swapGb=4
+
 if [[ -z "$INSTALL_DISK" ]]; then
     echo "Use parameter -d to define an install disk."
     exit 1
@@ -57,7 +59,7 @@ echo "Enabled NTP"
 # Disk Partitioning
 sgdisk -Z $INSTALL_DISK > /dev/null
 sgdisk -n 0:0:+500M -t 0:ef00 -c 0:"efi" $INSTALL_DISK > /dev/null
-sgdisk -n 0:0:+3G -t 0:8200 -c 0:"swap" $INSTALL_DISK > /dev/null
+sgdisk -n 0:0:+${swapGb}G -t 0:8200 -c 0:"swap" $INSTALL_DISK > /dev/null
 sgdisk -n 0:0:0 -t 0:8300 -c 0:"linux" $INSTALL_DISK > /dev/null
 sgdisk -p $INSTALL_DISK > /dev/null
 partprobe $INSTALL_DISK > /dev/null
