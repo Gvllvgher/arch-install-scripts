@@ -87,7 +87,7 @@ fi
 
 # Check if -w was defined, install window manager
 if [[ "$WINDOW_MANAGER" == "qtile" ]]; then
-    $WORKING_DIR/scripts/install-qtile.sh -u $LOCAL_USER
+    $WORKING_DIR/scripts/install-qtile.sh -u $LOCAL_USER -w $WORKING_DIR
 fi
 
 # Remove nopasswd allow
