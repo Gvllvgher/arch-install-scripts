@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # We need to 'su' the local user, so we ask for that here
-while getopts ':u:' opt; do
+while getopts ':u:w:' opt; do
     case $opt in
         u)
             LOCAL_USER=${OPTARG}

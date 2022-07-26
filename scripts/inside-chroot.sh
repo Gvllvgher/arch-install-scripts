@@ -1,7 +1,7 @@
 #! /bin/bash
 
 # Parameters
-while getopts ':u:w:' opt; do
+while getopts ':u:w:t:r:' opt; do
     case $opt in
         u)
             LOCAL_USER=${OPTARG}
