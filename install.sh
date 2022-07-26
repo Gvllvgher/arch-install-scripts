@@ -77,6 +77,9 @@ mount --mkdir $INSTALL_DISK_PART1 /mnt/boot > /dev/null
 swapon $INSTALL_DISK_PART2 > /dev/null
 echo "Mounted disks"
 
+# Initializing Pacman
+pacman -Sy archlinux-keyring --noconfirm > /dev/null
+
 # Install essential packages
 echo "Installing packages, this will take some time"
 pacstrap /mnt base linux linux-firmware base-devel linux-headers networkmanager git wget curl vim grub efibootmgr sudo base-devel dmidecode > /dev/null
