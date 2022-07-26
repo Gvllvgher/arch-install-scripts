@@ -106,7 +106,6 @@ chmod +777 /mnt/temp/*.sh > /dev/null
 chmod +x /mnt/temp/**/*.sh > /dev/null
 chmod +777 /mnt/temp/**/*.sh > /dev/null
 
-
 # Execute inside-chroot.sh
 if [[ -z "$WINDOW_MANAGER" ]]; then
     arch-chroot /mnt /temp/inside-chroot.sh -u $LOCAL_USER
