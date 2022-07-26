@@ -11,6 +11,14 @@ while getopts ':u:w:' opt; do
             WINDOW_MANAGER=${OPTARG}
             echo "WINDOW_MANAGER set to: ${OPTARG}"
             ;;
+        t)
+            TEMP_DIR=${OPTARG}
+            echo "TEMP_DIR set to: ${OPTARG}"
+            ;;
+        r)
+            REPO=${OPTARG}
+            echo "REPO set to: ${OPTARG}"
+            ;;
         \?)
             echo "Invalid option: -$OPTARG"
             exit 1
@@ -26,6 +34,8 @@ if [[ -z "$LOCAL_USER" ]]; then
     echo "Use parameter -u to specify the username."
     exit 1
 fi
+
+WORKING_DIR="$TEMP_DIR/$REPO"
 
 # Install Grub
 grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=grub > /dev/null
@@ -72,12 +82,12 @@ echo "%wheel ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 dmidecode -s system-product-name | grep 'VMware' &> /dev/null
 if [[ $? == 0  ]]; then
     echo "Detected as running as VMware VM, installing vmware-tools"
-    /temp/arch-customization-scripts/install-vmtools.sh
+    $WORKING_DIR/scripts/install-vmtools.sh
 fi
 
 # Check if -w was defined, install window manager
 if [[ "$WINDOW_MANAGER" == "qtile" ]]; then
-    /temp/arch-customization-scripts/install-qtile.sh -u $LOCAL_USER
+    $WORKING_DIR/scripts/install-qtile.sh -u $LOCAL_USER
 fi
 
 # Remove nopasswd allow

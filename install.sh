@@ -25,7 +25,12 @@ while getopts ':d:u:w:' opt; do
     esac
 done
 
-swapGb=4
+# Variables
+SWAP_GB=4 # Swap amount
+TEMP_DIR="/mnt/temp" # Temp Directory path
+INSIDE_TEMP_DIR="/temp"
+GIT_BASE_URL="https://github.com/Gvllvgher" # Base URL for git repo
+REPO="arch-install-scripts" # Git repo name
 
 if [[ -z "$INSTALL_DISK" ]]; then
     echo "Use parameter -d to define an install disk."
@@ -52,6 +57,9 @@ if [[ "$LOCAL_USER" == *" "* ]]; then
     exit 1
 fi
 
+# Local script directory
+SCRIPT_DIR="$( cd -- "$( dirname -- "${BASH_SOURCE[0]:-$0}";     )" &> /dev/null && pwd 2> /dev/null;     )";
+
 # Setup hardware clock
 timedatectl set-ntp true > /dev/null
 echo "Enabled NTP"
@@ -59,7 +67,7 @@ echo "Enabled NTP"
 # Disk Partitioning
 sgdisk -Z $INSTALL_DISK > /dev/null
 sgdisk -n 0:0:+500M -t 0:ef00 -c 0:"efi" $INSTALL_DISK > /dev/null
-sgdisk -n 0:0:+${swapGb}G -t 0:8200 -c 0:"swap" $INSTALL_DISK > /dev/null
+sgdisk -n 0:0:+${SWAP_GB}G -t 0:8200 -c 0:"swap" $INSTALL_DISK > /dev/null
 sgdisk -n 0:0:0 -t 0:8300 -c 0:"linux" $INSTALL_DISK > /dev/null
 sgdisk -p $INSTALL_DISK > /dev/null
 partprobe $INSTALL_DISK > /dev/null
@@ -94,31 +102,21 @@ genfstab -U /mnt >> /mnt/etc/fstab
 echo "Generated fstab"
 
 # Make temp dir for this stuff
-mkdir /mnt/temp > /dev/null
+mkdir $TEMP_DIR > /dev/null
 
-# Copy inside-chroot.sh to /mnt
-cp inside-chroot.sh /mnt/temp/ > /dev/null
-echo "Copied inside-chroot.sh to /mnt"
-
-# Clone arch-customization-scripts to /temp
-git -C /mnt/temp clone https://github.com/Gvllvgher/arch-customization-scripts > /dev/null
-
-# Change all .sh file permissoins
-chmod +x /mnt/temp/*.sh > /dev/null
-chmod +777 /mnt/temp/*.sh > /dev/null
-chmod +x /mnt/temp/**/*.sh > /dev/null
-chmod +777 /mnt/temp/**/*.sh > /dev/null
+# Clone install-scripts
+git -C $TEMP_DIR clone $GIT_BASE_URL/$REPO
 
 # Execute inside-chroot.sh
 if [[ -z "$WINDOW_MANAGER" ]]; then
-    arch-chroot /mnt /temp/inside-chroot.sh -u $LOCAL_USER
+    arch-chroot /mnt $INSIDE_TEMP_DIR/$REPO/scripts/inside-chroot.sh -u $LOCAL_USER -t $INSIDE_TEMP_DIR -r $REPO
 else 
-    arch-chroot /mnt /temp/inside-chroot.sh -u $LOCAL_USER -w $WINDOW_MANAGER
+    arch-chroot /mnt $INSIDE_TEMP_DIR/$REPO/scripts/inside-chroot.sh -u $LOCAL_USER -w $WINDOW_MANAGER -t $INSIDE_TEMP_DIR -r $REPO
 fi
 echo "Finished inside-chroot.sh execution"
 
 # This is a test for now
-rm -rf /mnt/temp > /dev/null
+rm -rf $TEMP_DIR > /dev/null
 echo "Removed /mnt/temp"
 
 # Set user password to `arch`
