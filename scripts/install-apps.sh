@@ -40,6 +40,9 @@ pacmanApps=( \
     thunar
     neofetch
     kitty
+    dmenu
+    dunst
+    rofi
     bluez
     bluez-utils
     chromium
