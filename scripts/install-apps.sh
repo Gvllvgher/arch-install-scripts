@@ -64,6 +64,10 @@ yayApps=( \
     "vtop" \
 )
 
+pipApps=( \
+    "neovim" \
+)
+
 # Define any scripts that install custom apps
 appScripts=( \
     "$WORKING_DIR/apps/install-zsh.sh" \
@@ -84,6 +88,16 @@ for yayApp in ${yayApps[@]}; do
     su $LOCAL_USER<<EOF
 set -e
 yay -S $yayApp --noconfirm &> /dev/null
+exit
+EOF
+done
+
+# Install pip apps
+for pipApp in ${pipApps[@]}; do
+    echo "Installing $pipApp"
+    su $LOCAL_USER<<EOF
+set -e
+pip install $pipApp &> /dev/null
 exit
 EOF
 done
