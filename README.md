@@ -1,6 +1,7 @@
 # Arch Installation Scripts
-Customized install scripts
- 
+These installation scripts do many things, and I intend to add more functionality to them.
+They're meant to be run on the archiso, and they basically install arch for me. Explanations on each of the scripts below.
+
 ## Getting Started
 1. Clone the repo
    ```
@@ -16,3 +17,13 @@ Customized install scripts
    ```
    ./install.sh
    ```
+
+## install.sh
+This script does the following:
+    - Disk
+        - Partition
+        - Format
+        - Mount
+    - Run `pacman -Sy archlinux-keyring` to update the keyring
+    - Installs Applications
+        - paman `
