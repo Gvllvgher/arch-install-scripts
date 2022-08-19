@@ -29,7 +29,6 @@ fi
 pacmanApps=( \
     "exa
     npm
-    firefox
     flameshot
     starship
     alacritty
@@ -63,6 +62,7 @@ pacmanApps=( \
 
 # Define apps that need to be installed with yay
 yayApps=( \
+    "librewolf-bin" \
     "betterlockscreen" \
     "vtop" \
 )
