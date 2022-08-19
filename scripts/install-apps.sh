@@ -57,6 +57,7 @@ pacmanApps=( \
     cups-pdf
     nss-mdns
     avahi
+    openssh
     ranger" \
 )
 
