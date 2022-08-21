@@ -46,6 +46,7 @@ pacmanApps=( \
     bluez-utils
     chromium
     vim
+    wireguard-tools
     net-tools
     dnsutils
     man
