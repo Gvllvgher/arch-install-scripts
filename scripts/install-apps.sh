@@ -47,6 +47,7 @@ pacmanApps=( \
     chromium
     vim
     net-tools
+    dnsutils
     man
     ufw
     neovim
