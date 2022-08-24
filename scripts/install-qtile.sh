@@ -27,6 +27,9 @@ if [[ -z "$LOCAL_USER" ]]; then
     exit 1
 fi
 
+# Set wallpaper
+WALL=moraine-lake-ab-canada.png
+
 # Install Dependencies
 pacman -S xorg-server xorg-xinit lightdm lightdm-slick-greeter xfce4-power-manager xorg-mkfontscale picom nodejs feh papirus-icon-theme arc-gtk-theme alsa-utils python-psutil python-dbus-next --noconfirm > /dev/null
 
@@ -48,11 +51,11 @@ sed -i "s/#user-session=default/user-session=qtile/g" /etc/lightdm/lightdm.conf
 
 # Configure lightdm-slick-greeter
 mkdir -p /usr/share/backgrounds
-cp $WORKING_DIR/resources/arch-black-4k.png /usr/share/backgrounds
+cp $WORKING_DIR/resources/$WALL /usr/share/backgrounds
 
 cat <<EOT >> /etc/lightdm/slick-greeter.conf
 [Greeter]
-background=/usr/share/backgrounds/arch-black-4k.png
+background=/usr/share/backgrounds/$WALL
 draw-user-backgrounds=false
 draw-grid=true
 theme-name=Arc-Dark
