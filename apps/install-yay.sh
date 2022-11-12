@@ -19,7 +19,7 @@ while getopts ':u:' opt; do
 done
 
 if [[ -z "$LOCAL_USER" ]]; then
-    echo "install-yay.sh: Use paramter -u to specify a username."
+    echo "install-yay.sh: Use parameter -u to specify a username."
     exit 1
 fi
 
