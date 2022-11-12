@@ -67,7 +67,6 @@ pacmanApps=( \
 yayApps=( \
     "librewolf-bin" \
     "betterlockscreen" \
-    "github-cli" \
     "vtop" \
 )
 
