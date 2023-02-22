@@ -9,10 +9,10 @@ default arch
 timeout 3
 EOT
 
-cat <<EOT >> /boot/loader/arch.conf
+cat <<EOT >> /boot/loader/entries/arch.conf
 title Arch Linux
 linux /vmlinuz-linux
-initrd /initramfs-linux.img
 initrd /intel-ucode.img
+initrd /initramfs-linux.img
 options root=PARTUUID=$(blkid $OS_PART -s PARTUUID -o value)
 EOT
