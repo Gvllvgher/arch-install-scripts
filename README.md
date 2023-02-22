@@ -2,37 +2,17 @@
 These installation scripts do many things, and I intend to add more functionality to them.
 They're meant to be run on the archiso, and they basically install arch for me. Explanations on each of the scripts below.
 
-## Getting Started
-1. Clone the repo
-   ```
-   git clone https://github.com/Gvllvgher/arch-install-scripts
-   ```
-
-2. `cd` into the cloned repo
-   ```
-   cd arch-install-scripts/
-   ```
-
-4. Execute script
-   ```
-   ./install.sh
-   ```
-
-## install.sh
-This script does the following:
-    - Disk
-        - Partition
-        - Format
-        - Mount
-    - Run `pacman -Sy archlinux-keyring` to update the keyring
-    - Installs Applications
-        - paman `
-
-# How it works
-
 ## `install.sh`
-  - Variables:
-     - `SWAP_GB` default set to 4G
-     - `TEMP_DIR` defaults to /mnt/tmp
-     - `INSIDE_TEMP_DIR` defaults to /temp
-     - 
+This is the "executor" script that fires everything else. It requires the following parameters:
+  - `-d (INSTALL_DISK)` is the disk that arch is to be installed to. Usually something like /dev/sda or /dev/nvme0p1. Can determine disk with `fdisk -l` command.
+  - `-u (LOCAL_USER)` is the user account to be created. It should not contain any spaces or special characters.
+  - `-w (WINDOW_MANAGER)` is the desired window manager to be installed. As of now, `qtile` is the only option.
+
+The script contains some default variables that can be changed with caution:
+  - `SWAP_GB` defaults to 4G. The size of the swap partition.
+  - `TEMP_DIR` defaults to /mnt/tmp. Temp directory for _outside_ chroot.
+  - `INSIDE_TEMP_DIR` defaults to /temp. Temp directory for _inside_ chroot.
+  - `GIT_BASE_URL` defaults to "https://github.com/Gvllvgher". This is the base url for the install repository. The repo will be cloned inisde chroot.
+  - `REPO` defaults to "arch-install-scripts". The name of the repository.
+
+
