@@ -122,7 +122,7 @@ echo "Generated fstab"
 mkdir $TEMP_DIR > /dev/null
 
 # Copy scripts inside chroot
-cp -r $SCRIPT_DIR/* $INSIDE_TEMP_DIR
+cp -r $SCRIPT_DIR/* $TEMP_DIR
 
 # Execute inside-chroot.sh
 if [[ -z "$WINDOW_MANAGER" ]]; then
