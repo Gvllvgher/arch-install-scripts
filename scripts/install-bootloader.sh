@@ -1,6 +1,6 @@
 #! /bin/bash
 
-$OS_PART="/dev/sda3"
+OS_PART="/dev/sda3"
 
 #bootctl install
 
