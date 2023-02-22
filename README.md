@@ -27,3 +27,12 @@ This script does the following:
     - Run `pacman -Sy archlinux-keyring` to update the keyring
     - Installs Applications
         - paman `
+
+# How it works
+
+## `install.sh`
+  - Variables:
+     - `SWAP_GB` default set to 4G
+     - `TEMP_DIR` defaults to /mnt/tmp
+     - `INSIDE_TEMP_DIR` defaults to /temp
+     - 
