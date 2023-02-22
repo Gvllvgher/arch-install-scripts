@@ -19,6 +19,10 @@ while getopts ':u:w:t:r:' opt; do
             REPO=${OPTARG}
             echo "REPO set to: ${OPTARG}"
             ;;
+        p)
+            OS_PART=${OPTARG}
+            echo "OS PART set to: ${OPTARG}"
+            ;;
         \?)
             echo "Invalid option: -$OPTARG"
             exit 1
@@ -37,12 +41,8 @@ fi
 
 WORKING_DIR="$TEMP_DIR/$REPO"
 
-# Install Grub
-grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=grub > /dev/null
-sed -i "s/GRUB_TIMEOUT=5/GRUB_TIMEOUT=1/g" /etc/default/grub
-echo "Installed Grub"
-grub-mkconfig -o /boot/grub/grub.cfg > /dev/null
-echo "Generated Grub configuration"
+# Install systemd-boot
+$WORKING_DIR/scripts/install-bootloader.sh -p $OS_PART
 
 # Set the timezone
 ln -sf /usr/share/zoneinfo/America/New_York /etc/localtime > /dev/null

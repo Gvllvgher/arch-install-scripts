@@ -94,6 +94,7 @@ pacstrap /mnt \
     base \
     linux \
     linux-firmware \
+    intel-ucode \
     base-devel \
     linux-headers \
     networkmanager \
@@ -125,9 +126,9 @@ git -C $TEMP_DIR clone $GIT_BASE_URL/$REPO
 
 # Execute inside-chroot.sh
 if [[ -z "$WINDOW_MANAGER" ]]; then
-    arch-chroot /mnt $INSIDE_TEMP_DIR/$REPO/scripts/inside-chroot.sh -u $LOCAL_USER -t $INSIDE_TEMP_DIR -r $REPO
+    arch-chroot /mnt $INSIDE_TEMP_DIR/$REPO/scripts/inside-chroot.sh -u $LOCAL_USER -t $INSIDE_TEMP_DIR -r $REPO -p $INSTALL_DISK_PART3
 else 
-    arch-chroot /mnt $INSIDE_TEMP_DIR/$REPO/scripts/inside-chroot.sh -u $LOCAL_USER -w $WINDOW_MANAGER -t $INSIDE_TEMP_DIR -r $REPO
+    arch-chroot /mnt $INSIDE_TEMP_DIR/$REPO/scripts/inside-chroot.sh -u $LOCAL_USER -w $WINDOW_MANAGER -t $INSIDE_TEMP_DIR -r $REPO -p $INSTALL_DISK_PART3
 fi
 echo "Finished inside-chroot.sh execution"
 
