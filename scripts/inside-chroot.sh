@@ -1,7 +1,7 @@
 #! /bin/bash
 
 # Parameters
-while getopts ':u:w:t:r:p:' opt; do
+while getopts ':u:w:t:p:' opt; do
     case $opt in
         u)
             LOCAL_USER=${OPTARG}
@@ -14,10 +14,6 @@ while getopts ':u:w:t:r:p:' opt; do
         t)
             TEMP_DIR=${OPTARG}
             echo "TEMP_DIR set to: ${OPTARG}"
-            ;;
-        r)
-            REPO=${OPTARG}
-            echo "REPO set to: ${OPTARG}"
             ;;
         p)
             OS_PART=${OPTARG}
@@ -39,7 +35,7 @@ if [[ -z "$LOCAL_USER" ]]; then
     exit 1
 fi
 
-WORKING_DIR="$TEMP_DIR/$REPO"
+WORKING_DIR="$TEMP_DIR"
 
 # Install systemd-boot
 $WORKING_DIR/scripts/install-bootloader.sh -p $OS_PART

@@ -121,14 +121,14 @@ echo "Generated fstab"
 # Make temp dir for this stuff
 mkdir $TEMP_DIR > /dev/null
 
-# Clone install-scripts
-git -C $TEMP_DIR clone $GIT_BASE_URL/$REPO
+# Copy scripts inside chroot
+cp -r $SCRIPT_DIR/* $INSIDE_TEMP_DIR
 
 # Execute inside-chroot.sh
 if [[ -z "$WINDOW_MANAGER" ]]; then
-    arch-chroot /mnt $INSIDE_TEMP_DIR/$REPO/scripts/inside-chroot.sh -u $LOCAL_USER -t $INSIDE_TEMP_DIR -r $REPO -p $INSTALL_DISK_PART3
+    arch-chroot /mnt $INSIDE_TEMP_DIR/scripts/inside-chroot.sh -u $LOCAL_USER -t $INSIDE_TEMP_DIR -p $INSTALL_DISK_PART3
 else 
-    arch-chroot /mnt $INSIDE_TEMP_DIR/$REPO/scripts/inside-chroot.sh -u $LOCAL_USER -w $WINDOW_MANAGER -t $INSIDE_TEMP_DIR -r $REPO -p $INSTALL_DISK_PART3
+    arch-chroot /mnt $INSIDE_TEMP_DIR/scripts/inside-chroot.sh -u $LOCAL_USER -w $WINDOW_MANAGER -t $INSIDE_TEMP_DIR -p $INSTALL_DISK_PART3
 fi
 echo "Finished inside-chroot.sh execution"
 
