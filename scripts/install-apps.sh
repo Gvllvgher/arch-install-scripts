@@ -30,6 +30,7 @@ pacmanApps=( \
     "exa
     npm
     flameshot
+    firefox
     starship
     alacritty
     python-pip
@@ -44,7 +45,6 @@ pacmanApps=( \
     rofi
     bluez
     bluez-utils
-    chromium
     vim
     wireguard-tools
     net-tools
@@ -65,7 +65,6 @@ pacmanApps=( \
 
 # Define apps that need to be installed with yay
 yayApps=( \
-    "librewolf-bin" \
     "betterlockscreen" \
     "vtop" \
 )
