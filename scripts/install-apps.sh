@@ -48,6 +48,7 @@ pacmanApps=( \
     wireguard-tools
     net-tools
     dnsutils
+    inetutils
     man
     ufw
     neovim
