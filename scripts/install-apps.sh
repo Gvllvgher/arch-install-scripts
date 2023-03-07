@@ -71,6 +71,7 @@ yayApps=( \
 
 pipApps=( \
     "neovim" \
+    "pylint"
 )
 
 # Define any scripts that install custom apps
