@@ -60,6 +60,7 @@ pacmanApps=( \
     nss-mdns
     avahi
     openssh
+    highlight
     ranger" \
 )
 
