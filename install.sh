@@ -85,6 +85,9 @@ mount --mkdir $INSTALL_DISK_PART1 /mnt/boot > /dev/null
 swapon $INSTALL_DISK_PART2 > /dev/null
 echo "Mounted disks"
 
+# Init pacman
+pacman -Sy archlinux-keyring --noconfirm &> /dev/null
+
 # Install essential packages
 echo "Installing packages, this will take some time"
 pacstrap /mnt \
