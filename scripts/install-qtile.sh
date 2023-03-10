@@ -28,7 +28,22 @@ if [[ -z "$LOCAL_USER" ]]; then
 fi
 
 # Install Dependencies
-pacman -S xorg-server xorg-xinit lightdm lightdm-slick-greeter xfce4-power-manager xorg-mkfontscale picom nodejs feh papirus-icon-theme arc-gtk-theme alsa-utils python-psutil python-dbus-next --noconfirm > /dev/null
+pacman -S \
+  xorg-server \
+  xorg-xinit \
+  lightdm \
+  lightdm-slick-greeter \
+  xfce4-power-manager \
+  xorg-mkfontscale \
+  picom \
+  nodejs \
+  feh \
+  papirus-icon-theme \
+  arc-gtk-theme \
+  alsa-utils \
+  python-psutil \
+  python-dbus-next \
+  --noconfirm > /dev/null
 
 # Install custom apps
 $WORKING_DIR/scripts/install-apps.sh -u $LOCAL_USER -w $WORKING_DIR

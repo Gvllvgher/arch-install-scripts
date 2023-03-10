@@ -20,14 +20,10 @@ pacmanFonts=( \
     "noto-fonts
     noto-fonts-emoji
     ttf-linux-libertine
-    ttf-dejavu
-    ttf-liberation
     ttf-bitstream-vera
-    cantarell-fonts
     opendesktop-fonts
     ttf-opensans
     ttf-croscore
-    ttf-carlito
     ttf-caladea
     ttf-jetbrains-mono" \
 )
