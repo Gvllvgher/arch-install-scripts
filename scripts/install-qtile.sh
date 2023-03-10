@@ -74,7 +74,7 @@ EOT
 
 su $LOCAL_USER<<EOF
 set -e
-yay -S oranchelo-icon-theme rofi-bluetooth-git --noconfirm > /dev/null
+yay -S rofi-bluetooth-git --noconfirm > /dev/null
 exit
 EOF
 

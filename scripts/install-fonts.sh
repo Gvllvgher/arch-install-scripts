@@ -25,12 +25,13 @@ pacmanFonts=( \
     ttf-opensans
     ttf-croscore
     ttf-caladea
-    ttf-jetbrains-mono" \
+    ttf-jetbrains-mono
+    ttf-jetbrains-mono-nerd" \
 )
 
-yayFonts=( \
-    "nerd-fonts-jetbrains-mono" \
-)
+#yayFonts=( \
+#    "nerd-fonts-jetbrains-mono" \
+#)
 
 if [[ -z "$LOCAL_USER" ]]; then
     if ! [[ -z "$SUDO_USER" ]]; then
@@ -43,8 +44,8 @@ fi
 
 pacman -S $pacmanFonts --noconfirm > /dev/null
 
-su $LOCAL_USER<<EOF
-set -e
-yay -S ${yayFonts} --noconfirm > /dev/null
-exit
-EOF
+#su $LOCAL_USER<<EOF
+#set -e
+#yay -S ${yayFonts} --noconfirm > /dev/null
+#exit
+#EOF
