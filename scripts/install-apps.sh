@@ -38,6 +38,7 @@ pacmanApps=( \
     nodejs
     thunar
     neofetch
+    neovim
     kitty
     dmenu
     dunst
