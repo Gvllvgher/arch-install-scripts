@@ -52,6 +52,7 @@ pacmanApps=( \
     inetutils
     man
     ufw
+    xclip
     pulseaudio
     pulseaudio-bluetooth
     pavucontrol
