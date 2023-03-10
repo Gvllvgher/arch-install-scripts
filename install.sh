@@ -102,7 +102,6 @@ pacstrap /mnt \
     wget \
     curl \
     vim \
-    grub \
     efibootmgr \
     sudo \
     base-devel \
