@@ -51,7 +51,6 @@ pacmanApps=( \
     inetutils
     man
     ufw
-    neovim
     pulseaudio
     pulseaudio-bluetooth
     pavucontrol
