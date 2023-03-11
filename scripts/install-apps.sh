@@ -72,6 +72,7 @@ yayApps=( \
 )
 
 pipApps=( \
+    "catppuccin" \
     "neovim" \
     "pylint"
 )
