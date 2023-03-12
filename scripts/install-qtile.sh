@@ -69,7 +69,7 @@ draw-grid=true
 theme-name=Arc-Dark
 icon-theme=Oranchelo
 show-a11y=false
-background-color=#1e1e2e
+background-color=#11111b
 EOT
 
 su $LOCAL_USER<<EOF
