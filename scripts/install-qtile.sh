@@ -39,7 +39,6 @@ pacman -S \
   nodejs \
   feh \
   papirus-icon-theme \
-  arc-gtk-theme \
   alsa-utils \
   python-psutil \
   python-dbus-next \
