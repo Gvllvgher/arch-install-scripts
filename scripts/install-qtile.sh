@@ -66,17 +66,11 @@ cat <<EOT >> /etc/lightdm/slick-greeter.conf
 [Greeter]
 draw-user-backgrounds=false
 draw-grid=true
-theme-name=Arc-Dark
-icon-theme=Oranchelo
+theme-name=Catppuccin-Mocha-Standard-Blue-Dark
+icon-theme=Papirus-Dark
 show-a11y=false
 background-color=#11111b
 EOT
-
-su $LOCAL_USER<<EOF
-set -e
-yay -S rofi-bluetooth-git --noconfirm > /dev/null
-exit
-EOF
 
 # Enable the betterlockscreen service
 systemctl enable betterlockscreen@$LOCAL_USER > /dev/null

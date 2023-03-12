@@ -67,6 +67,8 @@ pacmanApps=( \
 
 # Define apps that need to be installed with yay
 yayApps=( \
+    "catppuccin-gtk-theme-mocha" \
+    "rofi-bluetooth-git" \
     "betterlockscreen" \
     "vtop" \
 )
