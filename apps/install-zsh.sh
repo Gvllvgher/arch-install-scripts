@@ -29,4 +29,5 @@ chsh -s $(which zsh)
 
 mkdir -p /home/$LOCAL_USER/.zsh
 git clone https://github.com/zsh-users/zsh-autosuggestions /home/$LOCAL_USER/.zsh/zsh-autosuggestions
+git clone https://github.com/catppuccin/zsh-syntax-highlighting /home/$LOCAL_USER/.zsh/catppuccin-zsh-syntax-highlighting
 git clone https://github.com/zsh-users/zsh-syntax-highlighting /home/$LOCAL_USER/.zsh/zsh-syntax-highlighting
