@@ -25,22 +25,17 @@ if [[ -z "$LOCAL_USER" ]]; then
     fi
 fi
 
-pacmanApps=( \
-  "glfw-x11
-  gnuradio
-  gnuradio-companion
-  python-setuptools" \
-)
+pacman -S \
+  glfw-x11 \
+  gnuradio \
+  gnuradio-companion \
+  python-setuptools \
+  --noconfirm
 
 yayApps=( \
   "sdrpp-git" \
   "chirp-next" \
 )
-
-for pacApp in ${pacmanApps[@]}; do
-    echo "Installing $pacApp"
-    pacman -S $pacApp --noconfirm &> /dev/null
-done
 
 for yayApp in ${yayApps[@]}; do
     echo "Installing $yayApp"
