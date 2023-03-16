@@ -30,7 +30,7 @@ pacman -S \
   gnuradio \
   gnuradio-companion \
   python-setuptools \
-  --noconfirm
+  --noconfirm &> /dev/null
 
 yayApps=( \
   "sdrpp-git" \
