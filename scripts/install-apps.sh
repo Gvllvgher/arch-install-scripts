@@ -56,6 +56,7 @@ pacmanApps=( \
     pulseaudio
     pulseaudio-bluetooth
     pavucontrol
+    python-setuptools
     cups
     cups-pdf
     nss-mdns

@@ -27,7 +27,8 @@ fi
 
 pacmanApps=( \
   "gnuradio
-  gnuradio-companion" \
+  gnuradio-companion
+  python-setuptools" \
 )
 
 yayApps=( \
