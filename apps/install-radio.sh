@@ -26,7 +26,8 @@ if [[ -z "$LOCAL_USER" ]]; then
 fi
 
 pacmanApps=( \
-  "gnuradio
+  "glfw-x11
+  gnuradio
   gnuradio-companion
   python-setuptools" \
 )
