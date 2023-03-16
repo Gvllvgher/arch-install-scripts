@@ -25,8 +25,26 @@ if [[ -z "$LOCAL_USER" ]]; then
     fi
 fi
 
-su $LOCAL_USER<<EOF
+pacmanApps=( \
+  "gnuradio
+  gnuradio-companion" \
+)
+
+yayApps=( \
+  "sdrpp-git" \
+  "chirp-next" \
+)
+
+for pacApp in ${pacmanApps[@]}; do
+    echo "Installing $pacApp"
+    pacman -S $pacApp --noconfirm &> /dev/null
+done
+
+for yayApp in ${yayApps[@]}; do
+    echo "Installing $yayApp"
+    su $LOCAL_USER<<EOF
 set -e
-yay -S sdrpp-git --noconfirm > /dev/null
+yay -S $yayApp --noconfirm &> /dev/null
 exit
 EOF
+done
