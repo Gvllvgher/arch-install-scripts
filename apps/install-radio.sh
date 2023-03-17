@@ -45,3 +45,8 @@ yay -S $yayApp --noconfirm &> /dev/null
 exit
 EOF
 done
+
+# Specifically for CHIRP software. Allows non-root users access to USB controller
+cat << 'EOT' >> /etc/udev/rules.d/50-embedded_devices.rules
+SUBSYSTEMS=="usb", ATTRS{product}== "CP2102 USB to UART Bridge Controller", GROUP="wheel", MODE="0666"
+EOT
