@@ -98,6 +98,7 @@ pacstrap /mnt \
     base-devel \
     linux-headers \
     networkmanager \
+    ntp \
     git \
     wget \
     curl \

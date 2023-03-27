@@ -64,6 +64,9 @@ echo "LANG=en_US.UTF-8" >> /etc/locale.conf
 echo "arch" >> /etc/hostname
 echo "Set Hostname"
 
+# Enable ntp
+systemctl enable ntpd > /dev/null
+
 # Sudo setup
 echo "%wheel ALL=(ALL:ALL) ALL" >> /etc/sudoers
 
