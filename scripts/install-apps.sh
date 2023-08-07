@@ -109,7 +109,7 @@ for pipApp in ${pipApps[@]}; do
     echo "Installing $pipApp"
     su $LOCAL_USER<<EOF
 set -e
-pip install $pipApp &> /dev/null
+pip install $pipApp --break-system-packages &> /dev/null
 exit
 EOF
 done
