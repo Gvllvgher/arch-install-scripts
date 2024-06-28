@@ -75,6 +75,7 @@ yayApps=( \
 )
 
 pipApps=( \
+    "pulsectl_asyncio" \
     "catppuccin" \
     "neovim" \
     "pylint"
