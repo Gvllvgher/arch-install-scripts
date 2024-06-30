@@ -105,7 +105,6 @@ pacstrap /mnt \
     vim \
     efibootmgr \
     sudo \
-    base-devel \
     dmidecode > /dev/null
 
 echo "Installed essential packages"
